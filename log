@@ -2,3 +2,19 @@ Sat, Aug 16, 2025  9:49:12 PM:
  tests:  0|5
 total_score: 0/70
 3f6cb15
+Sat, Aug 16, 2025 10:09:37 PM: 
+ exercises.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+In file included from test.c:5:0:
+exercises.c: In function 'copia_pila':
+exercises.c:79:22: error: implicit declaration of function 'createStack' [-Werror=implicit-function-declaration]
+    Stack* auxiliar = createStack();
+                      ^~~~~~~~~~~
+exercises.c:79:22: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
+exercises.c:83:22: error: 'elemento' undeclared (first use in this function)
+       push(auxiliar, elemento);
+                      ^~~~~~~~
+exercises.c:83:22: note: each undeclared identifier is reported only once for each function it appears in
+cc1.exe: all warnings being treated as errors
+Compilation failed
+e251661
