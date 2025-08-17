@@ -18,3 +18,9 @@ exercises.c:83:22: note: each undeclared identifier is reported only once for ea
 cc1.exe: all warnings being treated as errors
 Compilation failed
 e251661
+Sat, Aug 16, 2025 10:33:21 PM: 
+ exercises.c | 67 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 65 insertions(+), 2 deletions(-)
+ tests:  9|0
+total_score: 70/70
+a57bc57

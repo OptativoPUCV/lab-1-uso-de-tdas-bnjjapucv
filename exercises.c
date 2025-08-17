@@ -43,6 +43,15 @@ Al finalizar retorna la lista creada.
 
 List* crea_lista() {
    List* L = create_list();
+   for (int k = 1; k < 11; k++){
+      int *lista = (int*) malloc(sizeof(int));
+      if (lista == NULL){
+         return NULL;
+      }
+      *lista = k;
+      pushBack(L, lista);
+
+   }
    return L;
 }
 
@@ -52,7 +61,16 @@ Crea una función que reciba una lista de enteros (int*) y
 retorne la suma de sus elementos.
 */
 int sumaLista(List *L) {
-   return 0;
+   int suma = 0;
+
+   int *valor = (int *) first(L);
+    
+   while (valor != NULL) {
+      suma += *valor;  
+      valor = (int *) next(L);  
+   }
+
+   return suma;
 }
 
 /*
@@ -65,7 +83,18 @@ posiciona en el elemento anterior.
 */
 
 void eliminaElementos(List*L, int elem){
+   if(L == NULL) return; 
 
+   int* actual = first(L); 
+   while(actual != NULL){
+      if(*actual == elem){
+         popCurrent(L); 
+         actual = next(L); 
+      }
+      else{
+         actual = next(L); 
+      }
+   }
 }
 
 /*
@@ -76,9 +105,10 @@ Puedes usar una pila auxiliar.
 */
 
 void copia_pila(Stack* P1, Stack* P2) {
-   Stack* auxiliar = createStack();
+   Stack* auxiliar = create_stack();
    while(top(P1) != NULL)
    {
+      void* elemento = top(P1);
       pop(P1);
       push(auxiliar, elemento);
    }
@@ -100,6 +130,39 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 */
 
 int parentesisBalanceados(char *cadena) {
-   return 0;
+   int n = strlen(cadena);
+   char *stack = malloc(n);
+   if (!stack) return 0;
+
+   int top = -1;
+
+   for (int i = 0; cadena[i] != '\0'; i++) {
+      char c = cadena[i];
+
+      if (c == '(' || c == '[' || c == '{') {
+         stack[++top] = c;
+      }
+      
+      else if (c == ')' || c == ']' || c == '}') {
+         if (top == -1) { 
+               free(stack);
+               return 0;
+            }
+         char apertura = stack[top--]; 
+
+            if ((c == ')' && apertura != '(') ||
+               (c == ']' && apertura != '[') ||
+               (c == '}' && apertura != '{')) {
+               free(stack);
+               return 0;
+            }
+        }
+    }
+
+   int balanceado = (top == -1);
+   free(stack);
+
+   return balanceado;
 }
+
 
